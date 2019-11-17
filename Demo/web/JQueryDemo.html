@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>名单列表</title>
+    <script SRC="JS/jquery-3.3.1.min.js"></script>
+
+
+    <style>
+        td{
+            width: 100px;
+            padding-left: 2cm
+        }
+    </style>
+    <script>
+
+        function save(inp){
+            //obj 代表input标签
+            td.html($(this).val());
+        }
+
+        //入口函数
+        $(function(){
+            //页面加载完毕后，给所有的td标签固定宽度
+            //找到所有td标签，添加双击事件
+            $("td").dblclick(function(){
+                //this代表当前事件触发的对象  就代表点击的td标签
+                if($(this).find("input").length==0){
+                    var oldValue = $(this).html();
+                    $(this).html(`<input onblur="save(this)" value="${oldValue}" />`);//字符串模板拼接
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+<table border="1px"    >
+    <tr>
+        <th >编号</th>
+        <th>姓名</th>
+        <th>职业</th>
+    </tr>
+
+    <tr>
+        <td>1</td>
+        <td>后羿</td>
+        <td>射手</td>
+    </tr>
+
+    <tr>
+        <td>2</td>
+        <td>嫦娥</td>
+        <td>法师</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>八戒</td>
+        <td>坦克</td>
+    </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点名器</title>
+    <script src="JS/jquery-3.3.1.min.js"></script>
+    <script src="JS/jquery-migrate-1.0.0.js"></script>
+
+    <style>
+        #d1 div{
+            margin-bottom: 20px;
+            margin-left: 20px;
+            padding-top: 25px;
+        }
+        H1{
+            font: small-caps bold 50px arial
+            
+
+        }
+    </style>
+    <script>
+        var names = "陶界,胡肖鹏,钟伟,吕锐,王帅,齐豪,周玺晨,宋文彬,张小明,洪炜,杨金成,许代伟,谭建友,卢翔宇,李志鹏,刘建,杨盈,游顶,王满,陶浩东,方坤,孙世清,刘洋,王辰龙,李凡,于少通,朱俊峰,叶冲".split(",");
+        $(function () {
+            //names是一个数组
+            for (var i = 0; i < names.length; i++) {
+                var name = names[i];
+                $("#d1").append(`<div id="${i}">${name}</div>`);
+            }
+            $("#d1 div").css({
+                "float": "left",
+                "border": "1px solid red",
+                "width": "150px",
+                "height": "50px",
+                "text-align": "center",
+            });
+        });
+
+    </script>
+</head>
+<body bgcolor="#fffef9">
+
+<H1  ><div id="name"  align="center" >别紧张</div></H1>
+
+<hr>
+<input id="input1" type="button" value="开始">
+</hr>
+
+<div id="d1">
+
+</div>
+
+<script>
+
+    var interval;
+    var random_number;
+    function start() {
+       // alert(1);
+        //将之前的td样式还原
+        $("#" + random_number).css({"backgroundColor": "white", "color": "black"});
+        //在table表格中随机找一个td，改变背景颜色字体颜色即可
+        random_number = Math.floor(Math.random() * names.length);
+        $("#" + random_number).css({"backgroundColor": "pink", "color": "red"});
+        //将随机出来的姓名写道div中展示
+        $("#name").html(names[random_number] == "" ? "null" : names[random_number]);
+    }
+    $(function () {
+
+        $("#input1").toggle(function () {
+            $("#input1").prop("value" , "停止")
+
+              /*  interval = setInterval(function(){start()} , 100);*/
+            interval = setInterval("start()" , 100);
+
+        }, function () {
+            $("#input1").prop("value" , "结束")
+            alert(names[random_number]);
+            clearInterval(interval);
+
+        })
+    })
+
+
+</script>
+</body>
+</html>

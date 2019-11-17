@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>名单列表</title>
+    <script SRC="JS/jquery-3.3.1.min.js"></script>
+
+    <style>
+        td{
+            width: 120px;
+        }
+    </style>
+</head>
+
+<body>
+<table border="1px"width="365px">
+    <tr>
+        <th >编号</th>
+        <th>姓名</th>
+        <th>职业</th>
+    </tr>
+
+    <tr>
+        <td>1</td>
+        <td>后羿</td>
+        <td>射手</td>
+    </tr>
+
+    <tr>
+        <td>2</td>
+        <td>嫦娥</td>
+        <td>法师</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>八戒</td>
+        <td>坦克</td>
+    </tr>
+</table>
+    <script>
+        $("td").dblclick(function () {
+           var td= $(this);
+            var inval=$(this).html();//获取内容
+            var w=td.width(); //被双击的td单元格的宽度
+            var h=td.height();
+            td.html("")
+            var input=$("<input type='text'>")
+            input.appendTo(td).width(w).height(h).val(inval).focus().blur(function(){
+                //失去焦点时，把input的值赋给td单元格
+                td.html($(this).val());
+            });
+
+
+        })
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>点名器 - V2.0</title>
+    <meta charset="UTF-8">
+    <script src="JS/jquery-3.3.1.js"></script>
+
+    <script>
+        var names = "陶界,胡肖鹏,钟伟,吕锐,王帅,齐豪,周玺晨,宋文彬,张小明,洪炜,杨金成,许代伟,谭建友,卢翔宇,李志鹏,刘建,杨盈,游顶,王满,陶浩东,方坤,孙世清,刘洋,王辰龙,李凡,于少通,朱俊峰,叶冲,,".split(",");
+        //初始化表格
+        function init() {
+            var str_table = "<table border='1px'>";
+            for (var i = 0; i < 3; i++) {
+                str_table += "<tr>";
+                for (var j = 0; j < 10; j++) {
+                    str_table += "<td id='td_" + (i * 10 + j) + "'>" + names[i * 10 + j] + "</td>";
+                }
+                str_table += "</tr>";
+            }
+            str_table += "</table>";
+            $("#d1").html(str_table);
+        }
+        //开始点名
+        var random_number = 0;
+        var interval_flag = 0;
+
+        function start() {
+            //将之前的td样式还原
+            $("#td_" + random_number).css({"backgroundColor": "white", "color": "black"});
+            //在table表格中随机找一个td，改变背景颜色字体颜色即可
+            random_number = Math.floor(Math.random() * names.length);
+            $("#td_" + random_number).css({"backgroundColor": "pink", "color": "red"});
+            //将随机出来的姓名写道div中展示
+            $("#name").html(names[random_number] == "" ? "空" : names[random_number]);
+        }
+
+        $(function () {
+            //页面加载完毕后，绘制名单表格
+            init();
+            //给开始按钮添加单击事件
+            $("#input1").click(function () {
+                interval_flag = setInterval("start()", 100);
+            });
+
+            $("#input2").click(function () {
+                clearInterval(interval_flag);
+            });
+        });
+    </script>
+</head>
+<body bgcolor="#fffef9">
+<div id="name">别紧张</div>
+<hr>
+<input id="input1" type="button" value="开始">
+<input id="input2" type="button" value="停止">
+<hr>
+<div id="d1">
+
+</div>
+
+</body>
+</html>

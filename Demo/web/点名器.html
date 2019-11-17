@@ -5,7 +5,6 @@
     <title>点名器</title>
     <script src="JS/jquery-3.3.1.min.js"></script>
     <script src="JS/jquery-migrate-1.0.0.js"></script>
-
     <style>
         #d1 div{
             margin-bottom: 20px;
@@ -14,9 +13,7 @@
         }
         H1{
             font: small-caps bold 50px arial
-            
-
-        }
+          }
     </style>
     <script>
         var names = "陶界,胡肖鹏,钟伟,吕锐,王帅,齐豪,周玺晨,宋文彬,张小明,洪炜,杨金成,许代伟,谭建友,卢翔宇,李志鹏,刘建,杨盈,游顶,王满,陶浩东,方坤,孙世清,刘洋,王辰龙,李凡,于少通,朱俊峰,叶冲".split(",");
@@ -38,19 +35,13 @@
     </script>
 </head>
 <body bgcolor="#fffef9">
-
 <H1 id="name"  align="center">别紧张</H1>
-
 <hr>
 <input id="input1" type="button" value="开始">
 </hr>
-
 <div id="d1">
-
 </div>
-
 <script>
-
     var interval;
     var random_number;
     function start() {
@@ -74,7 +65,6 @@
         }, function () {
             $("#input1").prop("value" , "结束")
             clearInterval(interval);
-
         })
     })
 
